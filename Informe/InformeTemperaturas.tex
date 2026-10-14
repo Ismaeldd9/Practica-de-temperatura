@@ -1,0 +1,155 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{siunitx}
+\usepackage{gensymb}
+\usepackage{framed, xcolor}
+\definecolor{verdeVibrante}{HTML}{00C389}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol} % Paquete para poner varias columnas
+\usepackage{setspace} % Paquete para el interlineado
+\usepackage{caption} % Paquete Pie de Figura, en doble columna
+\usepackage{lipsum}  % Para crear texto de relleno
+\usepackage{titlesec}
+\usepackage{multirow}
+\usepackage{csquotes}
+\usepackage{hyperref}
+\usepackage{bigstrut}
+
+\setlength{\headheight}{20pt}
+
+
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=none,     % <-- ordena la bibliografía por orden de cita
+sortcites=true,   % ordena dentro de \cite{A,B,C} según primera aparición
+%defernumbers=true,% asigna números según la primera cita
+url=false,doi=false
+]{biblatex}
+
+\addbibresource{Biblio.bib}
+
+\DeclareFieldFormat{title}{%
+	\mkbibemph{%
+		\ifboolexpr{ not test{\iffieldundef{url}} }
+		{\href{\thefield{url}}{#1}}
+		{\ifboolexpr{ not test{\iffieldundef{doi}} }
+			{\href{https://doi.org/\thefield{doi}}{#1}}
+			{#1}}}}
+
+\addto\captionsspanish{%
+	\renewcommand{\figurename}{Figura}%
+	\renewcommand{\tablename}{Tabla}%
+}
+
+
+
+\renewcommand{\baselinestretch}{1.2}
+
+\numberwithin{equation}{section}
+
+\title{\Huge \textbf{\textcolor{verdeVibrante}{Informe de Temperatura: Tendencias de Temperatura por nivel en Andalucía}}}
+\author{Ismael Darias Darias \\ España, Granada, Universidad de Granada }
+\date{\today}
+
+
+\usepackage{geometry}
+\geometry{
+	margin=1in,
+	head=1.2cm
+}
+
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[c]{
+	\begin{tabular}{cc}
+		\multirow{2}{*}{\includegraphics[width=0.05\textwidth]{Logo/UGR-MARCA-01-color.png}} & {\small \textbf{\textcolor{verdeVibrante}{Informe de Temperatura: Tendencias de Temperatura por nivel en Andalucía}}} 
+		\\
+		& \small{Universidad de Granada} \\
+		& \small{\today} \\
+	\end{tabular}
+}
+\cfoot{\thepage} % Pone el número de página en el Centro del Footer (pie)
+\renewcommand{\headrulewidth}{0.4pt}
+%\lhead{}
+
+% Subcaptions centradas y compactas (opcional)
+\captionsetup[subfigure]{justification=centering,singlelinecheck=false}
+\captionsetup{skip=6pt}
+
+\newenvironment{Figura} % Para poder poner figuras en la columna
+{\par\medskip\noindent
+	\minipage{\linewidth}%
+	\captionsetup{type=figure}}% <- ¡habilita el tipo figure dentro del minipage!
+{\endminipage\par\medskip}
+
+\newenvironment{Tabla} % Para poder poner tablas en la columna
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
+
+
+\begin{document}
+	\maketitle
+
+	
+	\begin{multicols}{2}
+		\raggedcolumns
+        \section{Introducción}
+        El cambio climático y sus efectos es una de las principales preocupaciones entre la comunidad científica. Entre sus efectos más notorios y más estudiados, se encuentran el aumento de la temperatura media global, entre otros. En los últimos años, se han hecho diversos estudios, ya sea por métodos de predicción estadísticos o por modelos físicos, que buscan cuantificar y predecir los efectos del cambio climático en la temperatura, y en consecuencia en muchas otras variables climatológicas.
+
+        Entre los métodos más destacados y sencillos para hacer notar el aumento de la temperatura, se encuentra el cálculo de las tendencias: Se ajusta por mínimos cuadrados a un polinomio lineal los datos de temperatura anuales de una región, de forma que la pendiente del ajuste indica la variación anual de la temperatura.
+
+        En base a este método y su importancia, la pregunta planteada en este informe es: \textbf{¿Cual es la tendencia de temperatura que ha experimentado la comunidad de Andalucía en los últimos 30 años?}. Una pregunta que no busca simplemente, la visualización de los datos, sino cuantificar, que tan significativos son los efectos del cambio climático en la temperatura en la región sur de la Peninsula Ibérica.
+
+    \end{multicols}
+	
+	
+	
+\end{document}
+	%\begin{Figura}
+	%\centering
+	
+	% Primera fila
+	%\begin{subfigure}[htpb]{0.45\textwidth}
+	%	\centering
+	%	\includegraphics[width=\textwidth]{Imágenes/Vista en planta LiDAR}
+	%	\subcaption{Vista en planta del LiDAR}
+	%	\label{Fig:3a}
+	%\end{subfigure}
+	%\hfill
+	%\begin{subfigure}[htpb]{0.45\textwidth}
+	%	\centering
+	%	\includegraphics[width=\textwidth]{Imágenes/Vista lateral LiDAR}
+	%	\subcaption{Vista lateral del LiDAR}
+	%	\label{Fig:3b}
+	%\end{subfigure}
+	
+	% Segunda fila
+	%\begin{subfigure}[htpb]{0.45\textwidth}
+	%	\centering
+	%	\includegraphics[width=\textwidth]{Imágenes/Perfil tomado LiDAR}
+	%	\subcaption{Perfil de altura LiDAR tomado}
+	%	\label{Fig:3c}
+	%\end{subfigure}
+	%\hfill
+	%\begin{subfigure}[htpb]{0.45\textwidth}
+	%	\centering
+	%	\includegraphics[width=\textwidth]{Imágenes/Perfil}
+	%	\subcaption{Perfil de altura}
+	%	\label{Fig:3d}
+	%\end{subfigure}
+	
+	%\caption{Imágenes obtenidas con el LiDAR de GRAFCAN\cite{LiDAR}}
+	%\label{Fig:3}
+%\end{Figura}
